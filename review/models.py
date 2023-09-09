@@ -6,6 +6,7 @@ class Comments (models.Model):
    comments=models.TextField()
    name=models.CharField(max_length=32)
    date=models.DateField()
+   customer=models.CharField(max_length=32)
 
 
     
