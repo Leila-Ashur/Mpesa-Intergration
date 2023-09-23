@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'comment',
+    'shoppingcart',
+    # 'myusers',
     'drf_yasg',
 ]
 
@@ -87,6 +89,8 @@ DATABASES = {
         'PORT': '5432',            
     }
 }
+MEDIA_URL='/images/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'images')
 
 
 # Password validation
