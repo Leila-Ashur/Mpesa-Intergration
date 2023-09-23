@@ -9,5 +9,5 @@ urlpatterns = [
     
     
     path('access_token/', views.generateAccessToken, name='generateAccessToken'),
-    path('stk_push/', views.initiate_stk_push, name='initiate_stk_push', methods=['POST']),
+    path('stk_push/', views.initiate_stk_push, name='initiate_stk_push'),
 ]

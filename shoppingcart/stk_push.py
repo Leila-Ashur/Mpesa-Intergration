@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from .accessToken import generateAccessToken
 
 def initiate_stk_push(request):
-    if request.method != 'POST':
+    if request.method != 'GET':
         return JsonResponse({'error': 'Only POST requests are allowed.'})
     else:
         # GET DATA FROM THE FRONTEND UI
