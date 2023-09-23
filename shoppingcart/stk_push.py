@@ -6,9 +6,10 @@ from django.http import JsonResponse
 from .accessToken import generateAccessToken
 
 def initiate_stk_push(request):
+    # GET DATA FROM THE FRONTEND UI
     phone = request.data.get('phone')
     account_reference = request.data.get('account_reference')
-     amount = request.data.get('amount')
+    amount = request.data.get('amount')
     access_token_response = generateAccessToken(request)
     if isinstance(access_token_response, JsonResponse):
         access_token = access_token_response.content.decode('utf-8')
