@@ -6,14 +6,15 @@ from django.http import JsonResponse
 from .accessToken import generateAccessToken
 
 def initiate_stk_push(request):
+    phone = request.data.get('phone')
+    account_reference = request.data.get('account_reference')
+     amount = request.data.get('amount')
     access_token_response = generateAccessToken(request)
     if isinstance(access_token_response, JsonResponse):
         access_token = access_token_response.content.decode('utf-8')
         access_token_json = json.loads(access_token)
         access_token = access_token_json.get('access_token')
         if access_token:
-            amount = 1
-            phone = "254726794700"
             passkey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
             business_short_code = '174379'
             process_request_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
@@ -21,8 +22,7 @@ def initiate_stk_push(request):
             timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
             password = base64.b64encode((business_short_code + passkey + timestamp).encode()).decode()
             party_a = phone
-            party_b = '254708374149'
-            account_reference = 'UMESKIA SOFTWARES'
+            party_b = '254708374149'  
             transaction_desc = 'stkpush test'
             stk_push_headers = {
                 'Content-Type': 'application/json',
