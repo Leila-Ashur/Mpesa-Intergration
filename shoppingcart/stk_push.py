@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from .accessToken import generateAccessToken
 
 def initiate_stk_push(request):
-    access_token_response = get_access_token(request)
+    access_token_response = generateAccessToken(request)
     if isinstance(access_token_response, JsonResponse):
         access_token = access_token_response.content.decode('utf-8')
         access_token_json = json.loads(access_token)
