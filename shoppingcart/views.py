@@ -5,6 +5,7 @@ from .serializers import CartSerializer, CartItemSerializer
 from django.shortcuts import render
 
 from .accessToken import generateAccessToken
+from .stk_push import initiate_stk_push
 
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
